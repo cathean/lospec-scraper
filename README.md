@@ -15,9 +15,9 @@ const palettePageRes = await LospecScraper.palettePageScrape(url)
 console.log(palettePageRes);
 ```
 ## API Reference
-| Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `palettePageScrape(url)` | `url: string` | `object` | Scrapes a Lospec palette page and returns its data in object. |
+### palettePageScrape(url)
+Retrieves data from palette page.
+- ``url`` : The palette page link.
 ## Todo
 - [x] Palette page scraper
 - [ ] Gallery page scraper
