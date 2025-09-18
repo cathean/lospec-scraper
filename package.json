@@ -1,9 +1,12 @@
 {
   "name": "lospec-scraper",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "a lospec scraper",
   "main": "index.js",
   "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/cathean/lospec-scraper.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["lospec","scraper"],
+  "author": "cathean",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cathean/lospec-scraper/issues"
