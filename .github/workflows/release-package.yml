@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Lospec Scraper Package
 
 on:
   release:
