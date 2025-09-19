@@ -1,6 +1,6 @@
 {
   "name": "lospec-scraper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a lospec scraper",
   "main": "index.js",
   "type": "module",
@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/cathean/lospec-scraper.git"
   },
-  "keywords": ["lospec","scraper"],
+  "keywords": [
+    "lospec",
+    "scraper"
+  ],
   "author": "cathean",
   "license": "ISC",
   "bugs": {
