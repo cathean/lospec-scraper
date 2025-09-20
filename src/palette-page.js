@@ -1,12 +1,13 @@
 import * as util from "./util.js";
 
-export let paletteUrl;
+let paletteUrl;
 let $;
+let paletteJSON;
 
 export default async function palettePageScrape(url) {
     paletteUrl = url;
     $ = await util.fetchPage(paletteUrl);
-    
+    paletteJSON = await getPaletteJSON(url);
     const comments = getComments();
 
     const result = {
@@ -30,29 +31,43 @@ export default async function palettePageScrape(url) {
     return result;
 }
 
-export function getRandomPalettePageURL() {
+export async function getRandomPalettePageURL() {
     const paletteRandomURL = 'https://lospec.com/palette-list/random';
     const config = {
         headers: {
-            'Authorization': 'Bearer YOUR_AUTH_TOKEN',
             'Content-Type': 'application/json'
-      }
+        }
     }
-    const res = util.getRequest(paletteRandomURL, config);
+    const res = await util.getRequest(paletteRandomURL, config);
 
     return util.BASE_URL + res.request.path;
 }
 
+export async function getPaletteJSON(url) {
+    url = url + '.json';
+    const res = await util.getRequest(url);
+    return res.data;
+}
+
+export async function getPaletteCSV(url) {
+    url = url + '.csv';
+    const res = await util.getRequest(url);
+    return res.data; 
+}
+
 function getPaletteName() {
-    return $('a.palette-name').text();
+    return paletteJSON.name;
 }
 
 function getAuthorName() {
-    return $('p.attribution a').text();
+    return paletteJSON.author;
 }
 
 function getAuthorUrl() {
-    return util.BASE_URL + $('p.attribution a').attr('href');
+    if (util.isNotEmpty(paletteJSON.author))
+        return util.BASE_URL + $('p.attribution a').attr('href');
+    else
+        return '';
 }
 
 function getPaletteDesc() {
@@ -82,7 +97,7 @@ function getNumberOfColors() {
     $('.palette-info').each((i, el) => {
         const textDesc = $(el).find('strong').text().trim();
         if (textDesc === 'Number of colors:')
-            numberOfColors = $(el).text().trim();
+            numberOfColors = $(el).clone().find('strong').remove().end().text().trim()
 
     });
     return numberOfColors;
@@ -132,9 +147,14 @@ function getExamples() {
     $('ul.examples li').each((i, el) => {
         const imgUrl = $(el).find('img').attr('src');
         const imgAlt = $(el).find('img').attr('alt');
-        const description = $(el).find('.example-description p').clone().find('a').remove().end().text().trim();
-        const authorName = $(el).find('.user-link').text().trim();
-        const authorUrl = util.BASE_URL + $(el).find('.user-link').attr('href');
+        const description = $(el).find('.example-description p').text().trim();
+        let authorName = $(el).find('.user-link').text().trim();
+        let authorUrl = util.BASE_URL + $(el).find('.user-link').attr('href');
+
+        if (util.isNotEmpty(authorName))
+            authorUrl = util.BASE_URL + authorUrl;
+        else
+            authorUrl = '';
 
         examples.push({
             imgUrl,

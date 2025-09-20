@@ -15,3 +15,7 @@ export async function fetchPage(url) {
     const res = await getRequest(url);
     return cheerio.load(res.data);
 }
+
+export function isNotEmpty(str) {
+  return typeof str === "string" && str.trim().length > 0;
+}
