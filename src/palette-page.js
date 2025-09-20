@@ -30,6 +30,19 @@ export default async function palettePageScrape(url) {
     return result;
 }
 
+export function getRandomPalettePageURL() {
+    const paletteRandomURL = 'https://lospec.com/palette-list/random';
+    const config = {
+        headers: {
+            'Authorization': 'Bearer YOUR_AUTH_TOKEN',
+            'Content-Type': 'application/json'
+      }
+    }
+    const res = util.getRequest(paletteRandomURL, config);
+
+    return util.BASE_URL + res.request.path;
+}
+
 function getPaletteName() {
     return $('a.palette-name').text();
 }

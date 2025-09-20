@@ -1,6 +1,6 @@
 {
   "name": "lospec-scraper",
-  "version": "0.1.4",
+  "version": "0.1.2",
   "description": "a lospec scraper",
   "main": "index.js",
   "type": "module",
@@ -8,7 +8,7 @@
     ".": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Info: no test specified yet, for now\" && exit 0"
+    "test": "echo \"Info: no test specified yet, for now\" && exit 0npm"
   },
   "repository": {
     "type": "git",
