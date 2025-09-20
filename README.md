@@ -2,7 +2,7 @@
 [![npm version](https://img.shields.io/npm/v/lospec-scraper.svg)](https://www.npmjs.com/package/lospec-scraper)
 [![npm downloads](https://img.shields.io/npm/dm/lospec-scraper.svg)](https://www.npmjs.com/package/lospec-scraper)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/lospec-scraper)](https://bundlephobia.com/package/lospec-scraper)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Node.js module to scrape data from lospec (low-spec & pixel art gallery) website.
 
