@@ -1,12 +1,12 @@
 import * as util from "./util.js";
 
-let paletteUrl;
+let paletteURL;
 let $;
 let paletteJSON;
 
 export default async function palettePageScrape(url) {
-    paletteUrl = url;
-    $ = await util.fetchPage(paletteUrl);
+    paletteURL = url;
+    $ = await util.fetchPage(paletteURL);
     paletteJSON = await getPaletteJSON(url);
     const comments = getComments();
 

@@ -19,3 +19,9 @@ export async function fetchPage(url) {
 export function isNotEmpty(str) {
   return typeof str === "string" && str.trim().length > 0;
 }
+
+export function stringToResolution(str) {
+    str = str.replace(/[^0-9]+$/, "");
+    str = str.replace(/(\s+)/g, "x");
+    return str;
+}
