@@ -25,7 +25,8 @@ Retrieves data from palette page.
 - ``url`` : The palette page link.
 ## Todo
 - [x] Palette page scraper
-- [ ] Gallery page scraper
+- [x] Gallery page scraper
+- [x] Dailier page scraper
 - [ ] User page scraper
 - [ ] Palette search scraper
 - [ ] Gallery search scraper
