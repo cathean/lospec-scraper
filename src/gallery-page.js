@@ -1,13 +1,14 @@
 import * as util from './util.js';
 
-let galleryURL;
+let galleryUrl;
 let $;
 
 export default async function galleryPageScrape(url) {
-    galleryURL = url;
-    $ = await util.fetchPage(galleryURL);
+    galleryUrl = url;
+    $ = await util.fetchPage(galleryUrl);
 
     const res = {
+        url: galleryUrl,
         name: getName(),
         date: getDate(),
         isMasterpiece: isMasterpiece(),
