@@ -25,8 +25,6 @@ export default async function galleryPageScrape(url) {
     return res;
 }
 
-const res = await galleryPageScrape('https://lospec.com/gallery/imuted0001/whispers-of-the-pastel-ages');
-console.log(JSON.stringify(res, null, 2))
 
 function getName() {
     return $('header h1').clone().find('span').remove().end().text().trim();
