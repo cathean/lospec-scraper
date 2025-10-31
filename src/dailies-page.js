@@ -1,10 +1,12 @@
 import * as util from './util.js';
+import * as cheerio from 'cheerio';
 
 const dailiesUrl = 'https://lospec.com/dailies/';
 let $;
 
 export default async function dailiesPageScrape() {
-    $ = await util.fetchPage(dailiesUrl);
+    const reqRes = await util.getRequest(dailiesUrl, {});
+    $ = cheerio.load(reqRes.data);
 
     const res = {
         tagOfTheDay: getTagOfTheDay(),
