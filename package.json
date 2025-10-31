@@ -8,7 +8,7 @@
     ".": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Info: no test specified yet, for now\" && exit 0"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
