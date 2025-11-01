@@ -1,16 +1,13 @@
 import * as util from './util.js';
 import * as cheerio from 'cheerio';
 
-let galleryUrl;
 let $;
 
 export default async function galleryPageScrape(url) {
-    galleryUrl = url;
-    const reqRes = await util.getRequest(galleryUrl, {})
+    const reqRes = await util.getRequest(url, {})
     $ = cheerio.load(reqRes.data);
 
     const res = {
-        url: galleryUrl,
         name: getName(),
         date: getDate(),
         masterpiece: isMasterpiece(),

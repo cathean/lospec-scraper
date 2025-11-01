@@ -6,6 +6,7 @@ import palettePageScrape from "../src/palette-page.js";
 import galleryPageScrape from "../src/gallery-page.js";
 import gallerySearchScrape from "../src/gallery-search.js";
 import paletteSearchScrape from "../src/palette-search.js";
+import userPageScrape from "../src/user-page.js";
 
 it('Scrape dailies page', async () => {
     const res = await dailiesPageScrape();
@@ -60,6 +61,13 @@ it('Scrape pallete search page'), async () => {
     }
 
     const res = await paletteSearchScrape(filter);
+    assert.equal(typeof res, 'object');
+    assert.notEqual(res, null);
+}
+
+it('Scrape user page'), async () => {
+    const url = 'https://lospec.com/2bitdream'
+    const res = await userPageScrape(filter);
     assert.equal(typeof res, 'object');
     assert.notEqual(res, null);
 }

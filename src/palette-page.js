@@ -1,19 +1,16 @@
 import * as util from './util.js';
 import * as cheerio from 'cheerio';
 
-let paletteURL;
 let $;
 let paletteJSON;
 
 export default async function palettePageScrape(url) {
-    paletteURL = url;
-    const reqRes = await util.getRequest(paletteURL, {})
+    const reqRes = await util.getRequest(url, {})
     $ = cheerio.load(reqRes.data);
     paletteJSON = await getPaletteJSON(url);
     const comments = getComments();
 
     const result = {
-        url,
         paletteName: getPaletteName(),
         authorName: getAuthorName(),
         authorUrl: getAuthorUrl(),

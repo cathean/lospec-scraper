@@ -45,7 +45,7 @@ export default async function gallerySearchScrape(filter) {
     })
 
     return {
-        res
+        gallery: res
     };
 }
 
