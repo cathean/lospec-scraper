@@ -22,7 +22,7 @@ export default async function gallerySearchScrape(filter) {
     const reqRes = await util.postRequest(gallerySearchUrl, filter);
     $ = cheerio.load(reqRes.data.html);
 
-    let gallery = [];
+    let res = [];
 
     $('.gallery-thumbnail').each((i, el) => {
         const url = util.BASE_URL + $(el).attr('href');
@@ -33,7 +33,7 @@ export default async function gallerySearchScrape(filter) {
         const comments = $(el).find('.engagement').contents().filter((i, el) => el.type === 'text')[1]?.data.trim() || '0';
         const medium = $(el).find('.medium').text().trim();
 
-        gallery.push({
+        res.push({
             url: url,
             title: title,
             thumbnailUrl: thumbnailUrl,
@@ -44,10 +44,8 @@ export default async function gallerySearchScrape(filter) {
         })
     })
 
-    const res = {
-        gallery
-    }
-
-    return res;
+    return {
+        res
+    };
 }
 

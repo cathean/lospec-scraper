@@ -5,6 +5,7 @@ import dailiesPageScrape from "../src/dailies-page.js";
 import palettePageScrape from "../src/palette-page.js";
 import galleryPageScrape from "../src/gallery-page.js";
 import gallerySearchScrape from "../src/gallery-search.js";
+import paletteSearchScrape from "../src/palette-search.js";
 
 it('Scrape dailies page', async () => {
     const res = await dailiesPageScrape();
@@ -45,4 +46,20 @@ it('Scrape gallery search page'), async () => {
     filter.append('masterpiece', 'false');
 
     const res = await gallerySearchScrape();
+    assert.equal(typeof res, 'object');
+    assert.notEqual(res, null);
+}
+
+it('Scrape pallete search page'), async () => {
+    const filter = {
+        colorNumberFilterType: 'any',
+        colorNumber: '8',
+        page: 1,
+        tag: '',
+        sortingType: 'downloads'
+    }
+
+    const res = await paletteSearchScrape(filter);
+    assert.equal(typeof res, 'object');
+    assert.notEqual(res, null);
 }
