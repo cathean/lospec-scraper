@@ -40,8 +40,8 @@ function getPaletteOfTheDay() {
     const name = $('.daily.palette a').eq(0).text().trim();
     const url = util.BASE_URL + $('.daily.palette a').attr('href');
     const likes = $('.daily.palette').contents().filter((i, el) => el.type === 'text')[2].data.trim();
-    const totalComments = $('.daily.palette').contents().filter((i, el) => el.type === 'text')[3].data.trim();
-    const totalDownloads = $('.daily.palette').contents().filter((i, el) => el.type === 'text')[4].data.trim();
+    const totalComments = $('.daily.palette').contents().filter((i, el) => el.type === 'text')[3]?.data?.trim();
+    const totalDownloads = $('.daily.palette').contents().filter((i, el) => el.type === 'text')[4]?.data?.trim();
     
     let downloads = [];
     $('.daily.palette p a').each((i, el) => {

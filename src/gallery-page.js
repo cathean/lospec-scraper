@@ -13,7 +13,7 @@ export default async function galleryPageScrape(url) {
         url: galleryUrl,
         name: getName(),
         date: getDate(),
-        isMasterpiece: isMasterpiece(),
+        masterpiece: isMasterpiece(),
         medium: getMedium(),
         category: getCategory(),
         imageUrl: getImageUrl(),
