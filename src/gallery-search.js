@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
 import * as util from './util.js';
+import FormData from 'form-data';
 
 /*
 Filters form
@@ -19,6 +20,17 @@ const gallerySearchUrl = 'https://lospec.com/gallery';
 let $;
 
 export default async function gallerySearchScrape(filter) {
+    const f = new FormData();
+    f.append('page', filter.page);
+    f.append('medium', filter.medium);
+    f.append('category', filter.category);
+    f.append('sorting', filter.sorting);
+    f.append('time', filter.time);
+    f.append('artist', filter.artist);
+    f.append('liked-by', filter.likedBy);
+    f.append('tags', filter.tags);
+    f.append('masterpiece', filter.masterpiece);
+
     const reqRes = await util.postRequest(gallerySearchUrl, filter);
     $ = cheerio.load(reqRes.data.html);
 

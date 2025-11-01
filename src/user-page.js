@@ -27,16 +27,18 @@ export default async function userPageScrape(url) {
         })
     })
 
-    const filter = new FormData();
-    filter.append('page', '0');
-    filter.append('medium', 'all');
-    filter.append('category', 'all');
-    filter.append('sorting', 'latest');
-    filter.append('time', 'all');
-    filter.append('artist', handle.slice(1));
-    filter.append('liked-by', '');
-    filter.append('tags', '');
-    filter.append('masterpiece', 'false');
+    const filter = {
+        page: '0',
+        medium: 'all',
+        category: 'all',
+        sorting: 'latest',
+        time: 'all',
+        artist: handle.slice(1),
+        likedBy: '',
+        tags: '',
+        masterpiece: false
+    }
+
     const { gallery } = await gallerySearchScrape(filter);
 
     const res = {
