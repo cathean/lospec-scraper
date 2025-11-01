@@ -1,8 +1,10 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
+import FormData from 'form-data';
 import dailiesPageScrape from "../src/dailies-page.js";
 import palettePageScrape from "../src/palette-page.js";
 import galleryPageScrape from "../src/gallery-page.js";
+import gallerySearchScrape from "../src/gallery-search.js";
 
 it('Scrape dailies page', async () => {
     const res = await dailiesPageScrape();
@@ -30,3 +32,17 @@ it('Scrape gallery page'), async () => {
     assert.notEqual(res, null);
 }
 
+it('Scrape gallery search page'), async () => {
+    const filter = new FormData();
+    filter.append('page', '0');
+    filter.append('medium', 'all');
+    filter.append('category', 'all');
+    filter.append('sorting', 'latest');
+    filter.append('time', 'all');
+    filter.append('artist', '');
+    filter.append('liked-by', '');
+    filter.append('tags', '');
+    filter.append('masterpiece', 'false');
+
+    const res = await gallerySearchScrape();
+}
