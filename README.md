@@ -11,22 +11,36 @@ Node.js module to scrape data from lospec (low-spec & pixel art gallery) website
 npm install lospec-scraper
 ```
 ## Usage
-###  Scrape palette page
 ```javascript
 import LospecScraper from 'lospec-scraper';
 
-const url = ''
-const palettePageRes = await LospecScraper.palettePageScrape(url)
-console.log(palettePageRes);
+const palettePageRes = await LospecScraper.palettePageScrape(url);
+const galleryPageRes = await LospecScraper.galleryPageScrape(url);
+const userPageRes = await LospecScraper.userPageScrape(url);
+const dailiesRes = await LospecScraper.dailiesPageScrape();
+
+const scrapeFilter = {
+  colorNumberFilterType: 'any'
+  colorNumber: '8'
+  page: '0'
+  tag: ''
+  sortingType: 'downloads'
+}
+const paletteSearchRes = await LospecScraper.paletteSearchScrape(scrapeFilter);
+
+const galleryFilter = {
+    page: '0',
+    medium: 'all',
+    category: 'all',
+    sorting: 'latest',
+    time: 'all',
+    artist: '',
+    likedBy: '',
+    tags: '',
+    masterpiece: false
+}
+const gallerySearchRes = await LospecScraper.gallerySearchScrape(galleryFilter);
 ```
-## API Reference
-### palettePageScrape(url)
-Retrieves data from palette page.
-- ``url`` : The palette page link.
-## Todo
-- [x] Palette page scraper
-- [x] Gallery page scraper
-- [x] Dailier page scraper
-- [ ] User page scraper
-- [ ] Palette search scraper
-- [ ] Gallery search scraper
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
